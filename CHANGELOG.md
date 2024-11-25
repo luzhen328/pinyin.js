@@ -1,5 +1,65 @@
 # CHANGELOG
 
+----
+
+## 3.0.0-alpha.7 (2023-11-20)
+
+- feat: dynamic import optional dependencies.
+
+## 3.0.0-alpha.6 (2023-11-12)
+
+- feat: support [Intl.Segmenter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) for segment.
+- dict: 雪茄
+
+## 3.0.0-alpha.5 (2022-07-12)
+
+- fix: npm publish 中没有保护 esm 目录。
+- fix: dict: 修复“呢”的拼音默认顺序。
+- feat: dict: 新增“行不行”词语拼音。
+
+## 3.0.0-alpha.4 (2022-04-01)
+
+- dict: “着落” 拼音频率调整。
+
+## 3.0.0-alpha.3 (2022-03-27)
+
+- fix: phrases dict of "苹". #326
+
+## 3.0.0-alpha.2 (2022-03-22)
+
+- feat: pinyin implemention by typescript language.
+- feat: full Hanzi support for Web browser and Node.js
+- feat: segment support in Web browser and Node.js
+- feat: ES module and CommonJS module.
+- feat: support surname mode.
+- feat: better compact method.
+- fix: support specific segment for cli #322
+
+## 2.11.1 (2022-03-09)
+
+- deps(nodejieba): 锁定 nodejieba 依赖版本 #315, #316
+
+## 2.11.0 (2022-02-25)
+
+- feat(surname): 支持姓氏拼音模式，优先处理姓氏读音。 fixed #288
+
+## 2.10.2 (2021-04-11)
+
+- feat(cli): pinyin cli support group by phrases.
+
+## 2.10.1 (2021-04-11)
+
+- dict: fixed "〇桔吗" pinyin dict.
+
+## 2.10.0 (2021-04-11)
+
+- feat(group): Support group
+- dict: fixed "别鹤离鸾脏䄜" pinyin dict.
+
+## 2.9.1 (2020-05-03)
+
+- dict: fixed 氓's pinyin dict. #272
+
 ## 2.9.0 (2019-05-09)
 
 - dict: upgrade web pinyin dict. #243

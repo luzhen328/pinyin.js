@@ -1,26 +1,15 @@
 version = $(shell cat package.json | grep version | awk -F'"' '{print $$4}')
 
 install:
-	@spm install
 	@npm install
 
-build:
-	@spm build
-
-publish:
-	@npm publish
+publish: test
+	@npm publish --tag alpha
 	@git tag $(version)
 	@git push origin $(version)
 
-build-doc: clean build
-	@spm doc build
-
-watch:
-	@spm doc watch
-
-publish-doc: clean build-doc
-	@ghp-import _site
-	@git push origin gh-pages
+publishDoc:
+	@npm run doc:deploy
 
 clean:
 	@rm -fr _site
@@ -29,32 +18,21 @@ clean:
 runner = _site/tests/runner.html
 
 benchmark:
-	@node tests/benchmark.test.js
-
-test-cli:
-	@mocha -R spec --timeout 5000 tests/cli.test.js
+	@node benchmark/benchmark.js
 
 test-npm:
-	@./node_modules/.bin/istanbul cover \
-	./node_modules/.bin/_mocha \
-		-- \
-		--harmony \
-		--reporter spec \
-		--timeout 2000 \
-		--inline-diffs \
-		./tests/test.js
+	@npm test
 
-
-test-spm:
-	@spm test
 
 lint:
-	@./node_modules/eslint/bin/eslint.js ./lib/ ./bin/ ./tests/
+	@npm run lint
 
-test: lint test-npm test-cli benchmark
+test: lint test-npm
+
+test-local: test-npm
 
 output = _site/coverage.html
-coverage: build-doc
+coverage:
 	@rm -fr _site/src-cov
 	@jscoverage --encoding=utf8 src _site/src-cov
 	@mocha-browser ${runner}?cov -S -R html-cov > ${output}
@@ -83,4 +61,4 @@ dict-node:
 infrequent:
 	@node ./tools/infrequent.js > ./tools/zi/infrequent.js
 
-.PHONY: build-doc publish-doc server clean test coverage test-spm test-npm test-cli lint benchmark
+.PHONY: server clean test test-local coverage test-npm test-cli lint benchmark publish publishDoc

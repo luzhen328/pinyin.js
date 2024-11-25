@@ -17,6 +17,10 @@ Thumbs.db
 *.pyc
 *.pyo
 build
+esm
+amd
+lib
+lib2
 node_modules
 _site
 sea-modules
@@ -30,3 +34,9 @@ npm-debug.log
 spm_modules/
 tools/dict/error.log
 coverage/
+package-lock.json
+yarn.lock
+.umi/
+.nyc_output
+.pnpm-debug.log
+.umi-production
